@@ -1,0 +1,169 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/d6c72d99-82cc-4d2c-8e38-2088328fa6f2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/d6c72d99-82cc-4d2c-8e38-2088328fa6f2(1).png" type="Texture" id=2]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=3]
+[ext_resource path="res://themes/button_theme.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Cloud.png" type="Texture" id=5]
+[ext_resource path="res://Assets/bird/frame-1.png" type="Texture" id=6]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.58029
+margin_bottom = -1.58032
+theme = ExtResource( 4 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="d6c72d99-82cc-4d2c-8e38-2088328fa6f2(1)" type="Sprite" parent="Control"]
+position = Vector2( -84.3857, -70.0955 )
+scale = Vector2( 0.0955917, 0.100518 )
+texture = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = -7.76965
+margin_top = -95.9636
+margin_right = 244.23
+margin_bottom = -24.9636
+theme = ExtResource( 4 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Move Down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+margin_left = -110.998
+margin_top = -183.829
+margin_right = -58.9974
+margin_bottom = -127.829
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = -4.38867
+margin_top = -185.699
+margin_right = 184.611
+margin_bottom = -114.699
+theme = ExtResource( 4 )
+text = "Move up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instruction 1" type="Label" parent="Control"]
+margin_left = -244.399
+margin_top = -12.4055
+margin_right = 596.601
+margin_bottom = 58.5945
+theme = ExtResource( 4 )
+text = "Survive and score the maximun possible"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instruction 2" type="Control" parent="Control"]
+margin_left = -122.434
+margin_top = 149.699
+margin_right = 87.5665
+margin_bottom = 206.699
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instruction 2" type="Label" parent="Control/Instruction 2"]
+margin_right = 138.0
+margin_bottom = 71.0
+theme = ExtResource( 4 )
+text = "Avoid "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Control/Instruction 2"]
+margin_left = 152.856
+margin_top = 5.17773
+margin_right = 1498.86
+margin_bottom = 1060.18
+rect_scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 6 )
+stretch_mode = 5
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Instruction 2"]
+margin_left = 256.999
+margin_right = 503.999
+margin_bottom = 71.0
+theme = ExtResource( 4 )
+text = "to stay alive"
+
+[node name="Instruction 3" type="Control" parent="Control"]
+margin_left = -67.3168
+margin_top = 68.2201
+margin_right = 82.6832
+margin_bottom = 150.22
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Instruction 3"]
+margin_left = -176.165
+margin_right = -37.165
+margin_bottom = 71.0
+theme = ExtResource( 4 )
+text = "Collect"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/Instruction 3"]
+margin_left = -16.538
+margin_top = 8.62851
+margin_right = 114.462
+margin_bottom = 82.6285
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Label2" type="Label" parent="Control/Instruction 3"]
+margin_left = 127.271
+margin_right = 561.271
+margin_bottom = 71.0
+text = "to score more points"
+
+[node name="Button" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = 210.0
+margin_right = 70.0
+margin_bottom = 249.0
+theme = ExtResource( 4 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]

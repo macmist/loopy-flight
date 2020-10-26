@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Wrench.wav-f279b9507776f642795f0cb06894e8ef.sample"
+
+[deps]
+
+source_file="res://Audio/engines/Wrench.wav"
+dest_files=[ "res://.import/Wrench.wav-f279b9507776f642795f0cb06894e8ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

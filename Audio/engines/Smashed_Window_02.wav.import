@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Smashed_Window_02.wav-e1a45edf050457711fc03e1a96fa9b39.sample"
+
+[deps]
+
+source_file="res://Audio/engines/Smashed_Window_02.wav"
+dest_files=[ "res://.import/Smashed_Window_02.wav-e1a45edf050457711fc03e1a96fa9b39.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

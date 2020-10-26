@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Label.gd" type="Script" id=1]
+[ext_resource path="res://themes/button_theme.tres" type="Theme" id=2]
+
+
+[node name="Loop prompt" type="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -446.0
+margin_top = -35.5
+margin_right = 446.0
+margin_bottom = 35.5
+theme = ExtResource( 2 )
+text = "Press spacebar to do an awesome looping."
+align = 1
+autowrap = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}

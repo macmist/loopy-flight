@@ -1,0 +1,174 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/Plane/Fly (1).png" type="Texture" id=1]
+[ext_resource path="res://Assets/Plane/Fly (2).png" type="Texture" id=2]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Audio/engines/Engine_03.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Explosion+1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/New Piskel.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Anchor.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Fly",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 128.016
+height = 186.808
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 224.796, 22.7399 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.54
+emission_shape = 2
+emission_box_extents = Vector3( 50, 40, 20 )
+flag_disable_z = true
+spread = 82.76
+flatness = 0.11
+gravity = Vector3( -1000, 0, 0 )
+initial_velocity = 11.49
+initial_velocity_random = 0.57
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 16.09
+linear_accel_random = 0.13
+scale = 3.0
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.692593, 1 )
+colors = PoolColorArray( 0.760784, 0.478431, 0.168627, 1, 0.705882, 0.443137, 0.054902, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
+angular_velocity = 28.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 1.0
+damping = 22.0
+angle = 45.0
+angle_random = 1.0
+scale = 56.73
+color_ramp = SubResource( 6 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "End-Loop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -180.0, -360.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Half-Loop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -180.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -500, 100 ), Vector2( -50, 100 ), Vector2( 0, 100 ) ]
+}
+
+[node name="Anchor" type="Node2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+rotation_speed = 3
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 0, 100 )
+scale = Vector2( 0.15, 0.15 )
+script = ExtResource( 3 )
+path_to_target = NodePath("..")
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 1 )
+animation = "Fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2( 2.60132, 152.179 )
+shape = SubResource( 3 )
+
+[node name="Flying" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 4 )
+volume_db = -30.557
+pitch_scale = 0.39
+autoplay = true
+
+[node name="Crash" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 5 )
+volume_db = -9.649
+pitch_scale = 0.33
+
+[node name="EngineParticles" type="Particles2D" parent="Player"]
+position = Vector2( -228.598, 5.34821 )
+process_material = SubResource( 4 )
+texture = ExtResource( 6 )
+
+[node name="Explosion" type="Particles2D" parent="Player"]
+emitting = false
+amount = 20
+lifetime = 1.6
+one_shot = true
+preprocess = 0.25
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource( 7 )
+texture = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="Player"]
+autostart = true
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/End-Loop = SubResource( 8 )
+anims/Half-Loop = SubResource( 9 )
+anims/Start = SubResource( 10 )
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Player/Area2D" to="Player" method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="Player/Timer" to="." method="_on_Timer_timeout"]
